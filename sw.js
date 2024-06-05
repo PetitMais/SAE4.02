@@ -20,7 +20,6 @@ const addResourcesToCache = async (resources) => {
       putInCache(request, preloadResponse.clone());
       return preloadResponse;
     }
-  
     try {
       const responseFromNetwork = await fetch(request.clone());
       putInCache(request, responseFromNetwork.clone());
@@ -50,11 +49,11 @@ const addResourcesToCache = async (resources) => {
   self.addEventListener('install', (event) => {
     event.waitUntil(
       addResourcesToCache([
-        './',
-        './index.html',
-        './css/style.css',
-        './app.js',
-        './js/main.js',
+        '/',
+        '/index.html',
+        '/css/style.css',
+        '/app.js',
+        '/js/main.js',
       ])
     );
   });
