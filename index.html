@@ -4,6 +4,13 @@
     <meta charset="utf8" />
     <title>Quiz Harry Potter</title>
     <link rel="stylesheet" href="css/style.css" />
+    <script>
+        window.addEventListener('load', () => {
+            if ("serviceWotker" in navigator) {
+                navigator.serviceWorker.register('/sw.js')
+            }
+        })
+    </script>
 </head>
 <body>
     <div class="welcome-screen">
