@@ -13,9 +13,6 @@ body {
     align-items: center;
     text-align: center;
     color: rgb(0, 0, 0);
-
-    background-image: url(../img/background.jpg);
-
     background-size: cover;
     background-position-x: center;
 }
