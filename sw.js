@@ -1,7 +1,13 @@
 const PREFIX = 'V4';
 
-self.addEventListener('install', () => {
+self.addEventListener('install', (event) => {
   self.skipWaiting();
+  event.waitUntil(
+    (async () => {
+      const cache = await caches.open(PREFIX);
+      cache.add(new Request("/offline.html"));
+    })
+  )
   console.log(`${PREFIX} Install`)
 })
 
