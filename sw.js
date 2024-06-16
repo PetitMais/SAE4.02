@@ -18,7 +18,7 @@ self.addEventListener('activate', (event) => {
       const keys = caches.keys();
       await Promise.all(
         keys.map((key) => {
-          if(!key.includes(PREFIX)) {
+          if (!key.includes(PREFIX)) {
             return caches.delete(key);
           }
         })
