@@ -1,6 +1,6 @@
 const PREFIX = 'V1';
 const CACHED_FILES = [
-  
+  "css/style.css",
 ]
 
 self.addEventListener('install', (event) => {
@@ -8,7 +8,11 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     (async () => {
       const cache = await caches.open(PREFIX);
-      cache.add(new Request("/offline.html"));
+      await Promise.all(
+        [...CACHED_FILES, "/offline.html"].map((path) => {
+          return cache.add(new Request(path));
+        })
+      );
     })()
   )
   console.log(`${PREFIX} Install`)
