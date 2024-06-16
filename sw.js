@@ -1,4 +1,4 @@
-const PREFIX = 'V4';
+const PREFIX = 'V5';
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
