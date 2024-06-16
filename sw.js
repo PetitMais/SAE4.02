@@ -14,7 +14,7 @@ self.addEventListener('install', (event) => {
         })
       );
     })()
-  )
+  );
   console.log(`${PREFIX} Install`)
 });
 
@@ -54,7 +54,7 @@ self.addEventListener('fetch', (event) => {
         
       })()
     );
-  }else if(CACHED_FILES.includes(event.request.url)){
+  } else if(CACHED_FILES.includes(event.request.url)) {
     event.respondWith(caches.match(event.request));
   }
 });
