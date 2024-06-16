@@ -14,6 +14,6 @@ function main () {
     button.addEventListener('click', askPermission)
 }
 
-function askPermission () {
+async function askPermission () {
     const permission = await Notification.requestPermission();
 }
