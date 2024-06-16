@@ -18,6 +18,20 @@
             "sizes": "192x192"
         }
     ],
+    "screenshots": [
+    {
+      "src": "/screenshots/screenshot_bureau.png",
+      "sizes": "1917x942",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/screenshots/screenshot_mobile.png",
+      "sizes": "364x634",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+    ],
     "start_url": "/",
     "display": "standalone",
     "scope": "/",
