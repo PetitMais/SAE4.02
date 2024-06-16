@@ -14,7 +14,7 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   clients.claim();
   event.waitUntil(
-    (async() => {
+    (async () => {
       const keys = caches.keys();
       await Promise.all(
         keys.map((key) => {
