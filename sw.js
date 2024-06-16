@@ -16,9 +16,13 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(
     (async() => {
       const keys = caches.keys();
-      (await keys).forEach((key) => {
-        console.log(key);
-      });
+      await Promise.all(
+        keys.map((key) => {
+          if(!key.includes(PREFIX)){
+            return caches.delete(key);
+          }
+        })
+      )
     })()
   );
   console.log(`${PREFIX} Active`)
