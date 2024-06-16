@@ -11,8 +11,16 @@ self.addEventListener('install', (event) => {
   console.log(`${PREFIX} Install`)
 })
 
-self.addEventListener('activate', () => {
+self.addEventListener('activate', (event) => {
   clients.claim();
+  event.waitUntil(
+    (async() => {
+      const keys = caches.keys();
+      (await keys).forEach((key) => {
+        console.log(key);
+      });
+    })()
+  );
   console.log(`${PREFIX} Active`)
 })
 
