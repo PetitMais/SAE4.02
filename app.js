@@ -3,8 +3,8 @@ function main () {
     if (
         (!permission &&
         !('Notification' in window) &&
-        !('serviceWorker' in navigator)) ||
-        (Notification.permission !== 'default')
+        !('serviceWorker' in navigator)) 
+        // || (Notification.permission !== 'default')
     ) {
         return;
     }
@@ -16,6 +16,16 @@ function main () {
 
 async function askPermission () {
     const permission = await Notification.requestPermission();
+    if (permission == 'granted') {
+        registerServiceWorker()
+    }
+    console.log(permission)
+}
+
+async function registerServiceWorker () {
+    const registration = await navigator.serviceWorker.register('/sw.js')
+    const subscription = await registration.pushManager.getSubscription();
+    console.log(subscription)
 }
 
 main()
