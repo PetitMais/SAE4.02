@@ -4,7 +4,6 @@ function main () {
         !permission ||
         !('Notification' in window) ||
         !('serviceWorker' in navigator)
-
     ) {
         return;
     }
@@ -17,3 +16,5 @@ function main () {
 async function askPermission () {
     const permission = await Notification.requestPermission();
 }
+
+main()
