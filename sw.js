@@ -22,7 +22,7 @@ self.addEventListener('activate', (event) => {
             return caches.delete(key);
           }
         })
-      )
+      );
     })()
   );
   console.log(`${PREFIX} Active`)
