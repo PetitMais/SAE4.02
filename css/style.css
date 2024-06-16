@@ -3,6 +3,11 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+h1 {
+    color: blue;
+    text-align: center;
+}
+
 .welcome-screen,
 .question-screen,
 .end-screen {

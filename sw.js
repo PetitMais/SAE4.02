@@ -1,4 +1,7 @@
-const PREFIX = 'V5';
+const PREFIX = 'V1';
+const CACHED_FILES = [
+  
+]
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
