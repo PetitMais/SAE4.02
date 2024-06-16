@@ -6,7 +6,7 @@ self.addEventListener('install', (event) => {
     (async () => {
       const cache = await caches.open(PREFIX);
       cache.add(new Request("/offline.html"));
-    })
+    })()
   )
   console.log(`${PREFIX} Install`)
 })
