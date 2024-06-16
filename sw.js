@@ -4,6 +4,7 @@ const CACHED_FILES = [
   `${BASE}/css/style.css`,
   `${BASE}/js/main.js`,
 ];
+const LAZY_CACHE = [`${BASE}/js/main.js`];
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
@@ -44,11 +45,11 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
       (async () => {
         try {
-          const preloadResponse = await event.preloadResponse
+          const preloadResponse = await event.preloadResponse;
           if (preloadResponse){
-            return preloadResponse
+            return preloadResponse;
           }
-          return await fetch(event.request)
+          return await fetch(event.request);
         } catch(e){
           const cache = await caches.open(PREFIX);
           return await cache.match("/offline.html");
@@ -58,5 +59,24 @@ self.addEventListener('fetch', (event) => {
     );
   } else if(CACHED_FILES.includes(event.request.url)) {
     event.respondWith(caches.match(event.request));
-  }
+  } else if(LAZY_CACHE.includes(event.request.url)) {
+    event.respondWith(
+      (async () => {
+        try {
+          const cache = await caches.oepen(PREFIX);
+          const preloadResponse = await event.preloadResponse;
+          if (preloadResponse){
+            cache.put(event.request, preloadResponse.clone())
+            return preloadResponse;
+          }
+          const networkResponse = await fetch(event.request);
+          cache.put(event.request, networkResponse.clone());
+          return networkResponse;
+        } catch(e){
+          return await caches.match(event.request);
+        }
+        
+      })()
+    );
+  } 
 });
