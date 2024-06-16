@@ -29,7 +29,8 @@ self.addEventListener('fetch', (event) => {
           }
           return await fetch(event.request)
         } catch(e){
-          return new Response('Bonjour les gens')
+          const cache = await caches.open(PREFIX);
+          return await cache.match("/offline.html");
         }
         
       })()
