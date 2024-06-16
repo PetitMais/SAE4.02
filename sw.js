@@ -1,6 +1,8 @@
-const PREFIX = 'V1';
+const BASE = location.protocol + "//" + location.host;
+const PREFIX = 'V2';
 const CACHED_FILES = [
-  "./css/style.css",
+  `${BASE}/css/style.css`,
+  `${BASE}/css/main.js`,
 ];
 
 self.addEventListener('install', (event) => {
