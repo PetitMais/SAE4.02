@@ -17,6 +17,7 @@
             "sizes": "192*192"
         }
     ],
-    "start_url": "/?source=pwa",
-    "display": "standalone"
+    "start_url": "/",
+    "display": "standalone",
+    "orientation": "portrait"
 }
