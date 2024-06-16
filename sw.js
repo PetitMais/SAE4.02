@@ -2,7 +2,7 @@ const BASE = location.protocol + "//" + location.host;
 const PREFIX = 'V2';
 const CACHED_FILES = [
   `${BASE}/css/style.css`,
-  `${BASE}/css/main.js`,
+  `${BASE}/js/main.js`,
 ];
 
 self.addEventListener('install', (event) => {
