@@ -1,4 +1,4 @@
-const PREFIX = 'V2';
+const PREFIX = 'V1';
 
 self.addEventListener('install', () => {
   console.log(`${PREFIX} Install`)
