@@ -12,7 +12,7 @@ self.addEventListener('install', (event) => {
 })
 
 self.addEventListener('activate', () => {
-  clients.claims();
+  clients.claim();
   console.log(`${PREFIX} Active`)
 })
 
