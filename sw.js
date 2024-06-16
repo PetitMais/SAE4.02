@@ -15,7 +15,7 @@ self.addEventListener('activate', (event) => {
   clients.claim();
   event.waitUntil(
     (async () => {
-      const keys = caches.keys();
+      const keys = await caches.keys();
       await Promise.all(
         keys.map((key) => {
           if (!key.includes(PREFIX)) {
