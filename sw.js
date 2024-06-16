@@ -9,7 +9,7 @@ self.addEventListener('install', (event) => {
     })()
   )
   console.log(`${PREFIX} Install`)
-})
+});
 
 self.addEventListener('activate', (event) => {
   clients.claim();
@@ -18,7 +18,7 @@ self.addEventListener('activate', (event) => {
       const keys = caches.keys();
       await Promise.all(
         keys.map((key) => {
-          if(!key.includes(PREFIX)){
+          if(!key.includes(PREFIX)) {
             return caches.delete(key);
           }
         })
@@ -26,7 +26,7 @@ self.addEventListener('activate', (event) => {
     })()
   );
   console.log(`${PREFIX} Active`)
-})
+});
 
 self.addEventListener('fetch', (event) => {
   console.log(`${PREFIX} Fetching : ${event.request.url}, Mode : ${event.request.mode}`);
