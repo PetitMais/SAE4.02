@@ -1,6 +1,6 @@
 const PREFIX = 'V1';
 const CACHED_FILES = [
-  "css/style.css",
+  "./css/style.css",
 ]
 
 self.addEventListener('install', (event) => {
