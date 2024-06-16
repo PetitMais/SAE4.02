@@ -1,10 +1,12 @@
-const PREFIX = 'V1';
+const PREFIX = 'V4';
 
 self.addEventListener('install', () => {
+  self.skipWaiting();
   console.log(`${PREFIX} Install`)
 })
 
 self.addEventListener('activate', () => {
+  clients.claims();
   console.log(`${PREFIX} Active`)
 })
 
