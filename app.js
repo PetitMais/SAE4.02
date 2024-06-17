@@ -28,4 +28,11 @@ async function registerServiceWorker () {
     console.log(subscription)
 }
 
+navigator.serviceWorker.ready.then((reg) => {
+    reg.pushManager.getSubscription().then((subscription) => {
+      const options = subscription.options;
+      console.log(options.applicationServerKey); // the public key
+    });
+  });
+
 main()
