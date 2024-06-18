@@ -65,7 +65,7 @@ app.get("/send-notification", async (req, res) => {
         return res.status(400).json({ status: "Error", message: "No subscriptions found" });
     }
 
-    const payload = JSON.stringify({ title: "Hello world", body: "This is a push notification" });
+    const payload = JSON.stringify({ title: "Choipipo", body: "Choisie ta maison !!!" });
 
     const results = await Promise.all(subDatabase.map(async (subscription, index) => {
         try {
