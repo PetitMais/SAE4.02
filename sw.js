@@ -63,7 +63,7 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
       (async () => {
         try {
-          const cache = await caches.oepen(PREFIX);
+          const cache = await caches.open(PREFIX);
           const preloadResponse = await event.preloadResponse;
           if (preloadResponse){
             cache.put(event.request, preloadResponse.clone())
@@ -80,3 +80,71 @@ self.addEventListener('fetch', (event) => {
     );
   } 
 });
+
+//Notif push
+const urlBase64ToUint8Array = base64String => {
+  const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+  const base64 = (base64String + padding)
+      .replace(/\-/g, '+')
+      .replace(/_/g, '/');
+
+  const rawData = atob(base64);
+  const outputArray = new Uint8Array(rawData.length);
+
+  for (let i = 0; i < rawData.length; ++i) {
+      outputArray[i] = rawData.charCodeAt(i);
+  }
+
+  return outputArray;
+}
+
+const saveSubscription = async (subscription) => {
+  const response = await fetch('http://localhost:3000/save-subscription', {
+      method: 'post',
+      headers: { 'Content-type': "application/json" },
+      body: JSON.stringify(subscription)
+  })
+
+  return response.json()
+}
+
+self.addEventListener("activate", async (event) => {
+  const subscription = await self.registration.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: urlBase64ToUint8Array("BBesPLMl_D2QE8Hlojk7RF8sK53ECyRUpXK5B4JpV_qDIgWGT9x-7HMkMi7FHr1HRTeLSSTx6GlWKQV36e23RP4")
+  })
+  const response = await saveSubscription(subscription)
+  console.log(response)
+});
+
+self.addEventListener("push", event => {
+  self.registration.showNotification("Wohoo!!", { body: event.data.text() })
+})
+
+self.addEventListener("notificationclick", event => {
+  event.notification.close()
+  event.waitUntil(
+    openUrl('https://choixpipo.netlify.app/')
+  )
+})
+
+async function openUrl (url) {
+  const windowClients = await self.clients.matchAll({type: 'window',
+    includeUncontrolled : true
+  })
+  for (let i = 0; i < windowClients.length; i++){
+    const client = windowClients[i]
+    if (client.url == url && 'focus' in client) {
+      return client.focus()
+    }
+  }
+  if (self.clients.openWindow) {
+    return self.clients.openWindow('https://choixpipo.netlify.app/')
+  }
+  return null
+}
+// Public Key:
+// BBesPLMl_D2QE8Hlojk7RF8sK53ECyRUpXK5B4JpV_qDIgWGT9x-7HMkMi7FHr1HRTeLSSTx6GlWKQV36e23RP4
+
+// Private Key:
+// 5c2NKOlBBvxOEWYgrweHbyxc6E93TGaVkBPw5wruzGk
