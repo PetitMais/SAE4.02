@@ -13,29 +13,28 @@ Ces instructions vous permettront d'obtenir une copie du projet opérationnel su
 ### Demarrage du server
 
 Met le projet dans un xampp puisqu'on va utiliser localhost.
-Dans le terminnal de VSC écrit les ligne suivante :
+
+Dans le terminal de VSC écrit les lignes suivantes :
 
 ```
 cd server
 npx nodemon app.js
 ```
 Normalement dans le terminal (si tout ce passe bien) il y aura écrit : Server running on port 3000!
+
 Puis ouvre les deux page suivante : [localhsot:3000](http://localhost:3000/) et [localhsot:3000/send-notification](http://localhost:3000/send-notification).
 
 ### Notification push
 
-Une série d'exemples étape par étape qui vous expliquent comment faire fonctionner un environnement de développement
+Ouvre le projet dans le navigateur : [choixpipo.netlify.app](https://choixpipo.netlify.app/).
 
-Dites quelle sera l'étape
+Maintenant vous avec juste a cliquer sur l'icone de cloche et à accpter les notifications.
 
-```
-Donne l'exemple
-```
+Retourner sur [localhsot:3000/send-notification](http://localhost:3000/send-notification), puis actualiser lapage et normalement un notification sera envoyer à chaque actualisation de cette page.
 
-Et répétez
+### 
 
-```
-jusqu'à ce que ce soit fini
-```
 
-Terminez par un exemple d'extraction de données du système ou de leur utilisation pour une petite démonstration
+
+
+
