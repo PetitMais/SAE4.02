@@ -3,6 +3,7 @@ const PREFIX = 'V2';
 const CACHED_FILES = [
   `${BASE}/css/style.css`,
   `${BASE}/js/main.js`,
+  `${BASE}/icons/192.png`,
 ];
 const LAZY_CACHE = [`${BASE}/js/main.js`];
 
