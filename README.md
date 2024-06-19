@@ -10,15 +10,19 @@ Le projet Choixpeau est une application interactive inspirée de l'univers de Ha
 
 Ces instructions vous permettront d'obtenir une copie du projet opérationnel sur votre ordinateur local à des fins  de test.
 
-### Conditions préalables pour activer le serveur
+### Demarrage du server
 
-De quoi avez-vous besoin pour installer le logiciel et comment les installer
+Met le projet dans un xampp puisqu'on va utiliser localhost.
+Dans le terminnal de VSC écrit les ligne suivante :
 
 ```
-Donne des exemples
+cd server
+npx nodemon app.js
 ```
+Normalement dans le terminal (si tout ce passe bien) il y aura écrit : Server running on port 3000!
+Puis ouvre les deux page suivante : [localhsot:3000](http://localhost:3000/) et [localhsot:3000/send-notification](http://localhost:3000/send-notification).
 
-### Installation
+### Notification push
 
 Une série d'exemples étape par étape qui vous expliquent comment faire fonctionner un environnement de développement
 
